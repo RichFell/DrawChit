@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class DrawingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, BrushSizeViewDelegate, ColorViewDelegate {
 
     var lastPoint : CGPoint!
     var opacity : CGFloat = 1.0
@@ -18,6 +18,7 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
     let imagePicker = UIImagePickerController()
     var selectedButton : UIButton!
 
+    @IBOutlet weak var thicknessButton: UIButton!
     @IBOutlet weak var drawingImageView: UIImageView!
     @IBOutlet weak var mainImageView: UIImageView!
 
@@ -27,12 +28,10 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
     }
 
     @IBAction func colorSelectedOnTapped(sender: UIButton) {
-        selectedColor = SelectedColor(rawValue: sender.tag)!
-        if selectedButton != nil {
-            selectedButton.backgroundColor = UIColor.clearColor()
-        }
-        selectedButton = sender
-        selectedButton.backgroundColor = UIColor.blueColor()
+        let newView = NSBundle.mainBundle().loadNibNamed("ColorView", owner: self, options: nil)[0] as ColorView
+        newView.frame = CGRectMake(CGRectGetMinX(sender.frame), CGRectGetMaxY(sender.frame) - CGRectGetHeight(newView.frame), CGRectGetWidth(newView.frame), CGRectGetHeight(newView.frame))
+        newView.delegate = self
+        view.addSubview(newView)
     }
 
     @IBAction func resetOnTapped(sender: UIButton) {
@@ -69,7 +68,11 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
     }
 
     @IBAction func selectThicknessOnTapped(sender: UIButton) {
-        
+        let bundleArray = NSBundle.mainBundle().loadNibNamed("BrushSizeView", owner: self, options: nil)
+        let aView = bundleArray.first as BrushSizeView
+        aView.frame = CGRectMake(CGRectGetMinX(sender.frame), CGRectGetMaxY(sender.frame) - CGRectGetHeight(aView.frame), CGRectGetWidth(aView.frame), CGRectGetHeight(aView.frame))
+        aView.delegate = self
+        view.addSubview(aView)
     }
 
     private func saveImage(){
@@ -138,6 +141,18 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
         imagePicker.dismissViewControllerAnimated(true, completion: { () -> Void in
             self.mainImageView.image = image
         })
+    }
+
+    //MARK: BrushViewDelegate Method
+    func didSelectNewBrushSize(selectedSize: CGFloat, forView theView: BrushSizeView) {
+        theView.removeFromSuperview()
+        strokeWidth = selectedSize
+    }
+
+    //MARK: ColorViewDelegate Method
+    func didSelectNewColorType(type: SelectedColor, fromView theView: ColorView) {
+        selectedColor = type
+        theView.removeFromSuperview()
     }
 }
 

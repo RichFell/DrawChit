@@ -72,4 +72,8 @@ enum SelectedColor: Int {
         default: return 0.0/255.0
         }
     }
+
+    func color() -> UIColor {
+        return UIColor(red: self.red(), green: self.green(), blue: self.blue(), alpha: 1.0)
+    }
 }
