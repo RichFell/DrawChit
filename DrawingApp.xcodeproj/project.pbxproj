@@ -12,6 +12,7 @@
 		9B131F9C1AA1037400B8E3D1 /* BrushSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B131F9B1AA1037400B8E3D1 /* BrushSizeView.swift */; };
 		9B1C33571AA120A70050E541 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1C33561AA120A70050E541 /* ColorView.swift */; };
 		9B1C33591AA120BF0050E541 /* ColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1C33581AA120BF0050E541 /* ColorView.xib */; };
+		9B1C335B1AA12F090050E541 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1C335A1AA12F090050E541 /* ImageListViewController.swift */; };
 		9B1CD8AB1A9F72F5004C1830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1CD8AA1A9F72F5004C1830 /* AppDelegate.swift */; };
 		9B1CD8AD1A9F72F5004C1830 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1CD8AC1A9F72F5004C1830 /* DrawingViewController.swift */; };
 		9B1CD8B01A9F72F5004C1830 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1CD8AE1A9F72F5004C1830 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		9B131F9B1AA1037400B8E3D1 /* BrushSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSizeView.swift; sourceTree = "<group>"; };
 		9B1C33561AA120A70050E541 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		9B1C33581AA120BF0050E541 /* ColorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorView.xib; sourceTree = "<group>"; };
+		9B1C335A1AA12F090050E541 /* ImageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
 		9B1CD8A51A9F72F4004C1830 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1CD8A91A9F72F5004C1830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B1CD8AA1A9F72F5004C1830 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B1C335C1AA12F220050E541 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B1CD8AC1A9F72F5004C1830 /* DrawingViewController.swift */,
+				9B1C335A1AA12F090050E541 /* ImageListViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9B1C335D1AA12F440050E541 /* NibViews */ = {
+			isa = PBXGroup;
+			children = (
+				9B131F991AA1034D00B8E3D1 /* BrushSizeView.xib */,
+				9B131F9B1AA1037400B8E3D1 /* BrushSizeView.swift */,
+				9B1C33581AA120BF0050E541 /* ColorView.xib */,
+				9B1C33561AA120A70050E541 /* ColorView.swift */,
+			);
+			name = NibViews;
+			sourceTree = "<group>";
+		};
+		9B1C335E1AA12F870050E541 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				9B131F971AA0FCD700B8E3D1 /* ColorButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		9B1C335F1AA12F950050E541 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				9B1CD8D21A9F96D3004C1830 /* SelectedColor.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
 		9B1CD89C1A9F72F4004C1830 = {
 			isa = PBXGroup;
 			children = (
@@ -122,17 +160,11 @@
 		9B1CD8A71A9F72F4004C1830 /* DrawingApp */ = {
 			isa = PBXGroup;
 			children = (
-				9B1CD8AA1A9F72F5004C1830 /* AppDelegate.swift */,
-				9B1CD8AC1A9F72F5004C1830 /* DrawingViewController.swift */,
-				9B1CD8D21A9F96D3004C1830 /* SelectedColor.swift */,
-				9B131F971AA0FCD700B8E3D1 /* ColorButton.swift */,
-				9B131F991AA1034D00B8E3D1 /* BrushSizeView.xib */,
-				9B131F9B1AA1037400B8E3D1 /* BrushSizeView.swift */,
-				9B1C33561AA120A70050E541 /* ColorView.swift */,
-				9B1C33581AA120BF0050E541 /* ColorView.xib */,
+				9B1C335F1AA12F950050E541 /* Enums */,
+				9B1C335E1AA12F870050E541 /* Buttons */,
+				9B1C335D1AA12F440050E541 /* NibViews */,
+				9B1C335C1AA12F220050E541 /* ViewControllers */,
 				9B1CD8AE1A9F72F5004C1830 /* Main.storyboard */,
-				9B1CD8B11A9F72F5004C1830 /* Images.xcassets */,
-				9B1CD8B31A9F72F5004C1830 /* LaunchScreen.xib */,
 				9B1CD8A81A9F72F5004C1830 /* Supporting Files */,
 			);
 			path = DrawingApp;
@@ -141,6 +173,9 @@
 		9B1CD8A81A9F72F5004C1830 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B1CD8B11A9F72F5004C1830 /* Images.xcassets */,
+				9B1CD8B31A9F72F5004C1830 /* LaunchScreen.xib */,
+				9B1CD8AA1A9F72F5004C1830 /* AppDelegate.swift */,
 				9B1CD8A91A9F72F5004C1830 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -269,6 +304,7 @@
 				9B1C33571AA120A70050E541 /* ColorView.swift in Sources */,
 				9B1CD8AD1A9F72F5004C1830 /* DrawingViewController.swift in Sources */,
 				9B1CD8D31A9F96D3004C1830 /* SelectedColor.swift in Sources */,
+				9B1C335B1AA12F090050E541 /* ImageListViewController.swift in Sources */,
 				9B131F9C1AA1037400B8E3D1 /* BrushSizeView.swift in Sources */,
 				9B1CD8AB1A9F72F5004C1830 /* AppDelegate.swift in Sources */,
 				9B131F981AA0FCD700B8E3D1 /* ColorButton.swift in Sources */,

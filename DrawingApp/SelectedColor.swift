@@ -35,7 +35,7 @@ enum SelectedColor: Int {
             case .LightGreen: return  101.0/255.0
             case .Yellow: return  255.0/255.0
             case .Eraser: return 255.0/255.0
-        default: return 0.0/255.0
+            default: return 0.0/255.0
         }
     }
 
@@ -52,7 +52,7 @@ enum SelectedColor: Int {
             case .LightGreen: return  249.0/255.0
             case .Yellow: return  251.0/255.0
             case .Eraser: return 255.0/255.0
-        default: return 0.0/255.0
+            default: return 0.0/255.0
         }
     }
 
@@ -69,7 +69,7 @@ enum SelectedColor: Int {
             case .LightGreen: return  0.0/255.0
             case .Yellow: return  0.0/255.0
             case .Eraser: return 255.0/255.0
-        default: return 0.0/255.0
+            default: return 0.0/255.0
         }
     }
 
