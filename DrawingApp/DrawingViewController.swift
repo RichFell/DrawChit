@@ -16,21 +16,25 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
     var swiped = false
     var selectedColor = SelectedColor.Black
     let imagePicker = UIImagePickerController()
-    var selectedButton : UIButton!
+    let panGesture = UIPanGestureRecognizer()
 
     @IBOutlet weak var thicknessButton: UIButton!
     @IBOutlet weak var drawingImageView: UIImageView!
     @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var colorButton: ColorButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        view.addGestureRecognizer(panGesture)
+        panGesture.addTarget(self, action: Selector("didPan:"))
     }
 
     @IBAction func colorSelectedOnTapped(sender: UIButton) {
         let newView = NSBundle.mainBundle().loadNibNamed("ColorView", owner: self, options: nil)[0] as ColorView
         newView.frame = CGRectMake(CGRectGetMinX(sender.frame), CGRectGetMaxY(sender.frame) - CGRectGetHeight(newView.frame), CGRectGetWidth(newView.frame), CGRectGetHeight(newView.frame))
         newView.delegate = self
+        newView.showSelectedColor(selectedColor)
         view.addSubview(newView)
     }
 
@@ -72,6 +76,7 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
         let aView = bundleArray.first as BrushSizeView
         aView.frame = CGRectMake(CGRectGetMinX(sender.frame), CGRectGetMaxY(sender.frame) - CGRectGetHeight(aView.frame), CGRectGetWidth(aView.frame), CGRectGetHeight(aView.frame))
         aView.delegate = self
+        aView.selectedSize(strokeWidth)
         view.addSubview(aView)
     }
 
@@ -88,16 +93,22 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
 
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        swiped = false
-        let touch = touches.anyObject() as UITouch
-        lastPoint = touch.locationInView(view)
+    func didPan(sender: UIPanGestureRecognizer){
+        switch sender.state {
+        case .Began:
+            swiped = false
+            lastPoint = sender.locationInView(view)
+        case .Changed:
+            changedlLocation(sender.locationInView(view))
+        case .Ended:
+            stoppedDrawing()
+        default:
+            println("fail")
+        }
     }
 
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+    private func changedlLocation(currentPoint: CGPoint) {
         swiped = true
-        let touch = touches.anyObject() as UITouch
-        let currentPoint = touch.locationInView(view)
         UIGraphicsBeginImageContext(view.frame.size)
         drawingImageView.image?.drawInRect(CGRectMake(0, 0, view.frame.size.width, view.frame.size.height))
         CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y)
@@ -113,9 +124,10 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
         UIGraphicsEndImageContext()
 
         lastPoint = currentPoint
+
     }
 
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    private func stoppedDrawing() {
         if !swiped {
             UIGraphicsBeginImageContext(view.frame.size)
             drawingImageView.image?.drawInRect(CGRectMake(0.0, 0.0, view.frame.size.width, view.frame.size.height))
@@ -145,13 +157,17 @@ class DrawingViewController: UIViewController, UINavigationControllerDelegate, U
 
     //MARK: BrushViewDelegate Method
     func didSelectNewBrushSize(selectedSize: CGFloat, forView theView: BrushSizeView) {
-        theView.removeFromSuperview()
         strokeWidth = selectedSize
+    }
+
+    func didFinishBrushSelection(theView: BrushSizeView) {
+        theView.removeFromSuperview()
     }
 
     //MARK: ColorViewDelegate Method
     func didSelectNewColorType(type: SelectedColor, fromView theView: ColorView) {
         selectedColor = type
+        colorButton.backgroundColor = type.color()
         theView.removeFromSuperview()
     }
 }

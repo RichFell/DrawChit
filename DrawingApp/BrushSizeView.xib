@@ -7,40 +7,37 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BrushSizeView" customModule="DrawingApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="52" height="247"/>
+            <rect key="frame" x="0.0" y="0.0" width="223" height="67"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RT-v8-MiU">
-                    <rect key="frame" x="11" y="109" width="31" height="30"/>
-                    <state key="normal" title="Med">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-Ml-c8p">
+                    <rect key="frame" x="14" y="4" width="37" height="31"/>
+                </imageView>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="3" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="l0G-ws-A69">
+                    <rect key="frame" x="57" y="4" width="118" height="31"/>
                     <connections>
-                        <action selector="selectSizeOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="KUC-EG-Jj5"/>
+                        <action selector="selectedNewBrushSize:" destination="iN0-l3-epB" eventType="valueChanged" id="FW2-eg-gHW"/>
                     </connections>
-                </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6g-EV-rnS">
-                    <rect key="frame" x="7" y="40" width="39" height="30"/>
-                    <state key="normal" title="Large">
+                </slider>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zKi-6S-slr">
+                    <rect key="frame" x="178" y="4" width="37" height="31"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEX-K7-rl8">
+                    <rect key="frame" x="91" y="37" width="40" height="30"/>
+                    <state key="normal" title="Close">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="selectSizeOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="G4o-dz-k2A"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-fr-sXq">
-                    <rect key="frame" x="7" y="182" width="38" height="30"/>
-                    <state key="normal" title="Small">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="selectSizeOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="mM7-VG-JJT"/>
+                        <action selector="closeViewOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="oEz-kq-atU"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="221" y="309.5"/>
+            <connections>
+                <outlet property="slider" destination="l0G-ws-A69" id="K60-tW-bbL"/>
+            </connections>
+            <point key="canvasLocation" x="256.5" y="323.5"/>
         </view>
     </objects>
 </document>

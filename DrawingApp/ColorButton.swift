@@ -10,7 +10,7 @@ import UIKit
 
 class ColorButton: UIButton {
 
-
+    var isSelected = false
 
     override func awakeFromNib() {
         setup()
@@ -24,6 +24,7 @@ class ColorButton: UIButton {
         titleLabel?.text = " "
         let type = SelectedColor(rawValue: tag)!
         backgroundColor = type.color()
+        tintColor = type.color()
         if type == SelectedColor.Eraser {
             imageView?.image = UIImage(named: "Eraser")
         }

@@ -123,6 +123,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="blackButton" destination="WaJ-5J-CJJ" id="qch-8M-cKc"/>
+                <outlet property="blueButton" destination="bFa-as-MJv" id="OkD-l0-Yrd"/>
+                <outlet property="brownButton" destination="VOA-GW-28k" id="Byp-5W-Bwr"/>
+                <outlet property="greenButton" destination="hwz-xQ-cjv" id="7QL-Yn-TYe"/>
+                <outlet property="greyButton" destination="Maw-ja-N9l" id="QlG-ef-i4N"/>
+                <outlet property="lBlueButton" destination="Y5O-cO-AqG" id="dJT-Tk-dgL"/>
+                <outlet property="lGreenButton" destination="wC5-yp-aaT" id="RAg-lH-KIY"/>
+                <outlet property="orangeButton" destination="GeC-yV-dBe" id="zRh-aD-WdV"/>
+                <outlet property="redButton" destination="RqN-wW-X2K" id="tp7-8V-bWa"/>
+                <outlet property="whiteButton" destination="J8Z-5S-xA5" id="sn5-ma-Pzo"/>
+                <outlet property="yellowButton" destination="dGg-LQ-PQv" id="wqg-pi-SZv"/>
+            </connections>
             <point key="canvasLocation" x="140" y="368.5"/>
         </view>
     </objects>
